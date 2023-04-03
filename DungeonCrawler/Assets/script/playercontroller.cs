@@ -23,6 +23,7 @@ public class playercontroller : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             this.rb.AddForce(this.northExit.transform.position * movementSpeed);
+            SceneManager.LoadScene("DungeonRoom");
         }
         else
         {
@@ -38,10 +39,12 @@ public class playercontroller : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
             this.rb.AddForce(this.eastExit.transform.position * movementSpeed);
+            SceneManager.LoadScene("DungeonRoom");
         }
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
             this.rb.AddForce(this.southExit.transform.position * movementSpeed);
+            SceneManager.LoadScene("DungeonRoom");
         }
     }
 
