@@ -345,6 +345,8 @@
 -r:"Library/Bee/artifacts/200b0aEDbg.dag/UnityEditor.UI.ref.dll"
 -r:"Library/Bee/artifacts/200b0aEDbg.dag/UnityEngine.UI.ref.dll"
 "Assets/script/Dugeonsetup.cs"
+"Assets/script/MasterData.cs"
+"Assets/script/playercontroller.cs"
 -langversion:9.0
 
 /deterministic
