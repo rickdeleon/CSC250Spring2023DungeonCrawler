@@ -23,7 +23,6 @@ public class playercontroller : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             this.rb.AddForce(this.northExit.transform.position * movementSpeed);
-
         }
         else
         {
@@ -39,6 +38,10 @@ public class playercontroller : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
             this.rb.AddForce(this.eastExit.transform.position * movementSpeed);
+        }
+        if (Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            this.rb.AddForce(this.southExit.transform.position * movementSpeed);
         }
     }
 
