@@ -10,47 +10,74 @@ public class playercontroller : MonoBehaviour
     public GameObject northExit, southExit, eastExit, westExit;
     public float movementSpeed = 40.0f;
     private bool isMoving;
-    private Vector3 hold;
     // Start is called before the first frame update
     void Start()
     {
-        this.rb.position = hold;
-        print(MasterData.whereDidIComeFrom);
         this.rb = this.GetComponent<Rigidbody>();
-        print(MasterData.count);
         this.isMoving = false;
+
+        if (!MasterData.whereDidIComeFrom.Equals("?"))
+        {
+            if (MasterData.whereDidIComeFrom.Equals("north"))
+            {
+                this.gameObject.transform.position = this.southExit.transform.position;
+                this.rb.AddForce(Vector3.forward * 150.0f);
+            }
+            else if (MasterData.whereDidIComeFrom.Equals("south"))
+            {
+                this.gameObject.transform.position = this.northExit.transform.position;
+                this.rb.AddForce(Vector3.back * 150.0f);
+            }
+            else if (MasterData.whereDidIComeFrom.Equals("west"))
+            {
+                this.gameObject.transform.position = this.eastExit.transform.position;
+                this.rb.AddForce(Vector3.left * 150.0f);
+            }
+            else if (MasterData.whereDidIComeFrom.Equals("east"))
+            {
+                this.gameObject.transform.position = this.westExit.transform.position;
+                this.rb.AddForce(Vector3.right * 150.0f);
+            }
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag.Equals("Exit"))
+        if (other.gameObject.CompareTag("center"))
+        {
+            this.rb.velocity = Vector3.zero;
+            this.rb.Sleep();
+            //this.rb.angularVelocity = Vector3.zero;
+        }
+
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Exit") && MasterData.isExiting)
         {
             if (other.gameObject == this.northExit)
             {
                 MasterData.whereDidIComeFrom = "north";
-                hold = -1 * (GameObject.FindGameObjectWithTag("Exit").transform.position);
             }
             else if (other.gameObject == this.southExit)
             {
                 MasterData.whereDidIComeFrom = "south";
-                hold = -1 * (GameObject.FindGameObjectWithTag("Exit").transform.position);
             }
             else if (other.gameObject == this.eastExit)
             {
                 MasterData.whereDidIComeFrom = "east";
-                hold = -1 * (GameObject.FindGameObjectWithTag("Exit").transform.position);
             }
             else if (other.gameObject == this.westExit)
             {
                 MasterData.whereDidIComeFrom = "west";
-                hold = -1 * (GameObject.FindGameObjectWithTag("Exit").transform.position);
             }
-            print("I hit an exit");
-
+            MasterData.isExiting = false;
             SceneManager.LoadScene("DungeonRoom");
-            
         }
-
+        else if (other.gameObject.CompareTag("Exit") && !MasterData.isExiting)
+        {
+            MasterData.isExiting = true;
+        }
     }
     // Update is called once per frame
     void Update()
