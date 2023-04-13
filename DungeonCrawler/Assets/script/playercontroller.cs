@@ -82,23 +82,17 @@ public class playercontroller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.UpArrow) && !isMoving)
+        if (Input.GetKeyDown(KeyCode.UpArrow) && !isMoving )
         {
             this.rb.AddForce(this.northExit.transform.position * movementSpeed);
             this.isMoving = true;
 
         }
-        else
-        {
-            if (Input.GetKeyDown(KeyCode.LeftArrow) && !isMoving)
-            {
-
-                this.rb.AddForce(this.westExit.transform.position * movementSpeed);
-                this.isMoving = true;
-                
-
-            }
+        if (Input.GetKeyDown(KeyCode.LeftArrow) && !isMoving){
+            this.rb.AddForce(this.westExit.transform.position * movementSpeed);
+            this.isMoving = true;
         }
+        
         if (Input.GetKeyDown(KeyCode.RightArrow) && !isMoving)
         {
             this.rb.AddForce(this.eastExit.transform.position * movementSpeed);

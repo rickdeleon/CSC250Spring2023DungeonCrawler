@@ -346,6 +346,10 @@
 -r:"Library/Bee/artifacts/200b0aEDbg.dag/UnityEngine.UI.ref.dll"
 "Assets/script/centerContoller.cs"
 "Assets/script/Dugeonsetup.cs"
+"Assets/script/dungeonBackend/Dungeon.cs"
+"Assets/script/dungeonBackend/Exit.cs"
+"Assets/script/dungeonBackend/Player.cs"
+"Assets/script/dungeonBackend/Room.cs"
 "Assets/script/MasterData.cs"
 "Assets/script/playercontroller.cs"
 -langversion:9.0
